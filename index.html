@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Numbers</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #232323;
+        }
+
+        h1 {
+            width: 98%;
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 28px;
+            margin: 1rem auto;
+
+            color: #fff;
+        }
+
+        #box {
+            width: 98%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 1rem;
+            row-gap: 1rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            margin: 1rem auto;
+        }
+
+        #box .numtext {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 21px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-align: center;
+            color: #fff;
+        }
+
+        #btns {
+            width: 98%;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            column-gap: 1rem;
+            flex-wrap: wrap;
+            row-gap: 1rem;
+        }
+
+        #btns .btntext {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 200;
+            letter-spacing: 0.02em;
+
+            padding: 0.4rem 0.8rem;
+            outline: none;
+            border: 2px solid #fff;
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            color: #fff;
+
+            background-color: transparent;
+        }
+
+        #btns .btntext:hover {
+            transform: scale(0.90);
+            transition: all 0.2s ease-in-out;
+
+            border: 2px solid #232323;
+            color: #232323;
+            background-color: #fff;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <div id="main">
+
+        <h1>Pin Numbers</h1>
+
+        <div id="box"></div>
+        
+        <div id="btns"></div>
+
+    </div>
+        
+    <script>
+
+        let box = document.querySelector('#box');
+        let btns = document.querySelector('#btns');
+
+        let nums = ['1','2','3','4','5'];
+
+        let p1 = document.createElement('p');
+        let p2 = document.createElement('p');
+        let p3 = document.createElement('p');
+        let p4 = document.createElement('p');
+        let p5 = document.createElement('p');
+        
+        p1.classList.add('numtext');
+        p2.classList.add('numtext');
+        p3.classList.add('numtext');
+        p4.classList.add('numtext');
+        p5.classList.add('numtext');
+
+        p1.innerHTML = nums[0];
+        p2.innerHTML = nums[1];
+        p3.innerHTML = nums[2];
+        p4.innerHTML = nums[3];
+        p5.innerHTML = nums[4];
+
+        box.append(p1,p2,p3,p4,p5)
+
+        const pins = (arr) => {
+            p1.textContent = arr[0];
+            p2.textContent = arr[1];
+            p3.textContent = arr[2];
+            p4.textContent = arr[3];
+            p5.textContent = arr[4];
+
+            box.append(p1,p2,p3,p4,p5);
+        }
+
+        nums.map((num)=>{
+            
+            let btn = document.createElement('button');
+            btn.type = 'button';
+            btn.classList.add('btntext');
+            btn.innerHTML = num;
+
+            btn.addEventListener('click',()=>{
+                let partIndex = nums.indexOf(btn.innerHTML);
+                let ele = nums.splice(partIndex,1);
+                nums = [...ele,...nums];
+                pins(nums);
+            })
+
+            btns.append(btn);
+        })
+
+    </script>
+
+</body>
+</html>
