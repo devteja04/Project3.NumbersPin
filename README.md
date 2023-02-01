@@ -6,4 +6,4 @@ Project Descsription :
 - When you press button of numbers then that number text will move forward.
 - So on...
 
-[Demo](https://devteja04.guthub.io/Project3.NumbersPin)
+[Demo](https://devteja04.github.io/Project3.NumbersPin/)
